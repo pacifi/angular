@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyFirsthApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="FirstController">
+
+<input type="text" ng-model="nuevoComentario.comentario">
+<input type="text" ng-model="nuevoComentario.username">
+
+<button ng-click="agregarComentario()">Agregar Comentario</button>
+
+
+<h3>Comentarios</h3>
+<ul>
+    <li ng-repeat="com in comentarios">
+        {{com.comentario}} - {{com.username}}
+    </li>
+</ul>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="controller.js"></script>
+</body>
+</html>

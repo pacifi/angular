@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Child Controllers</title>
+</head>
+<body>
+
+<div ng-controller="mainControl">
+    {{nombre}}
+    <div class="" ng-controller="HijoControl">
+        controler 3 {{nombre}}
+    </div>
+</div>
+
+<div class="" ng-controller="HijoControl">
+   controler 2 {{nombre}}
+
+    <p><strong>Valor del padre </strong>{{$parent.nombre}}</p>
+
+
+</div>
+
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ToDoList">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body ng-controller="TodoController">
+
+<form ng-submit="addActv()">
+    <input type="text" ng-model="newActv.descripcion"><br>
+    <input type="datetime-local" ng-model="newActv.fecha">
+    <input type="submit" value="Guardar">
+</form>
+
+<button ng-click="todo = []">Limpiar Storage</button>
+
+<ul>
+    <li ng-repeat="ac in todo">
+        {{ac.descripcion}} - {{ac.fecha | date:"yyyy/MM/dd HH:mm"}} - {{ac.fecha | date:"short"}}
+    </li>
+</ul>
+
+
+
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="controller.js"></script>
+</body>
+</html>

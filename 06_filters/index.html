@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="FiltersController">
+
+    {{mi_html | removeHtml}}
+    <br>
+    {{dicio | json}}
+    <br>
+    {{precio | currency:"S. "}}
+
+
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="controller.js"></script>
+</body>
+</html>
