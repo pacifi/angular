@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  webapp:
+    build: .
+    container_name: webapp
+    command: ["sleep", "30d"]
+    ports:
+      - 4200:4200
+    volumes:
+      - ../:/app
