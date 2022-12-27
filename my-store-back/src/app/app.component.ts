@@ -68,4 +68,8 @@ export class AppComponent {
     this.names.splice(index, 1);
   }
 
+  onsave() {
+
+  }
 }
+

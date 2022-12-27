@@ -1,7 +1,23 @@
+<p [class]=""></p>
+<button [disabled]=""></button>
+
+<h1>*ngSwitch</h1>
+<input type="text" [(ngModel)]="person.name">
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'nicolas'">La persona es nicolas</p>
+  <p *ngSwitchCase="'juan'">La persona es juan</p>
+  <p *ngSwitchCase="'bonnier'">La persona es Bonnier</p>
+  <p *ngSwitchDefault>No hay match</p>
+
+</div>
+
+
+{{1 + 1}}
+{{[1, 2].reverse()}}
 <h1>*ngFor Objs</h1>
-<div>
+<div class="product--grid">
   <div *ngFor="let product of products">
-    <img width="250" [src]="product.image" alt="">
+    <img [src]="product.image" alt="">
     <h2>{{product.price}}</h2>
     <p>{{product.name}}</p>
   </div>
@@ -61,5 +77,5 @@
 
 <h3>Hola soy {{name}}</h3>
 <h4>Mi edad es {{age}}</h4>
-<img src="{{img}}" alt="">
+<img width="100" src="{{img}}" alt="">
 
