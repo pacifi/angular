@@ -5,10 +5,12 @@ import { Product, ProductDTO, UpdateProductDto } from '../../models/product.mode
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+
 })
 export class ProductsComponent implements OnInit {
 
@@ -26,7 +28,7 @@ export class ProductsComponent implements OnInit {
   }
   limit = 10;
   offset = 0;
-
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(
     private storeService: StoreService,
@@ -53,10 +55,17 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
+    this.statusDetail = 'loading';
+    this.toggleProductDetail();
     this.productsService.getProduct(id)
       .subscribe(data => {
-        this.toggleProductDetail();
+
         this.productChosen = data;
+        this.statusDetail = 'success';
+      }, errorMsg => {
+        window.alert(errorMsg);
+        // this.toastr.error(errorMsg, 'Error');
+        this.statusDetail = 'error';
       });
   }
 
