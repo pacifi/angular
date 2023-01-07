@@ -6,6 +6,7 @@
     (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="onShowDetail($event)"
   ></app-product>
+  <button (click)="loadMore()">Load More</button>
 </div>
 
 <div class="product-detail" [class.active]="showProductDetail">
@@ -20,5 +21,7 @@
         <img [src]="img">
       </ng-template>
     </swiper>
+    <button (click)="updateProduct()">Editar</button>
+    <button (click)="deleteProduct()">Delete</button>
   </div>
 </div>
