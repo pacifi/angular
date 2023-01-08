@@ -3,6 +3,10 @@
 <p>
   <a href="./assets/files/text.txt" download>Descargar</a>
 </p>
+<p>
+  <input type="file" (change)="onUpload($event)">
+  <img *ngIf="imgRta" [src]="imgRta">
+</p>
 <button (click)="downloadPdf()"> Download PDF</button>
 <app-products></app-products>
 
