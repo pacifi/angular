@@ -5,6 +5,7 @@ import { Product, ProductDTO, UpdateProductDto } from './../models/product.model
 import { catchError, retry, retryWhen, map } from "rxjs/operators";
 import { environment } from './../../environments/environment'
 import { throwError, zip } from "rxjs";
+import { checkTime } from "../interceptors/time.interceptor";
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class ProductsService {
       params = params.set('offset', limit);
     }
     // return this.http.get<Product[]>('https://fakestoreapi.com/products');
-    return this.http.get<Product[]>(this.apiUrl, {params})
+    return this.http.get<Product[]>(this.apiUrl, {params, context: checkTime()})
       .pipe(
         retry(3),
         map(products => products.map(item => {
