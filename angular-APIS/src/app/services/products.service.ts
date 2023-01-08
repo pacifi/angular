@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams, HttpStatusCode } from '@angular/common/http';
 
 import { Product, ProductDTO, UpdateProductDto } from './../models/product.model';
-import { catchError, retry, retryWhen } from "rxjs/operators";
+import { catchError, retry, retryWhen, map } from "rxjs/operators";
 import { environment } from './../../environments/environment'
 import { throwError } from "rxjs";
 
@@ -29,7 +29,13 @@ export class ProductsService {
     // return this.http.get<Product[]>('https://fakestoreapi.com/products');
     return this.http.get<Product[]>(this.apiUrl, {params})
       .pipe(
-        retry(3)
+        retry(3),
+        map(products => products.map(item => {
+          return {
+            ...item,
+            taxes: 0.19 * item.price
+          }
+        }))
       );
   }
 
